@@ -1,8 +1,8 @@
 AdventureLibrary::Application.routes.draw do
   root 'adventures#index'
   # post '/email', to: 'email#email'
-  # get '/adventures ', to: 'adventures#adventures'
-  # get '/adventures ', to: 'adventures#adventures'
+  get '/adventures', to: 'adventures#adventures'
+  get '/libraries', to: 'adventures#libraries'
 
   resources :adventures do
     resources :pages

@@ -7,6 +7,5 @@ class PagesController < ApplicationController
     else
       @page = Page.where(adventure_id: params[:adventure_id]).find_by(id:params[:id])
     end
-    # binding.pry
   end
 end
