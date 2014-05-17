@@ -50,6 +50,8 @@ end
 
 # Use unicorn as the app server
 gem 'unicorn'
+gem 'unicorn-rails', :groups => [:development, :test]
+
 
 gem 'sidekiq'
 
