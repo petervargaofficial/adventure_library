@@ -22,3 +22,32 @@
 # 	:text => "this is page 2, what a ride! [[continue to page 3|page3]]")
 # adv.pages.create!(:name => "page3",
 # 	:text => "Wow that adventure was amazing!")
+
+
+# adv = Adventure.create!(:title => "Test Adventure 3",
+# 	:author => "Test")
+# adv.pages.create!(:name => "start",
+# 	:text => "Starting here, this is first page [[go to page 2|page2]] , or go to [[go to page 3|page3]] ")
+# adv.pages.create!(:name => "page2",
+# 	:text => "this is page 2, what a ride - here is a wrong link! [[continue to page 3|page4]]")
+# adv.pages.create!(:name => "page3",
+# 	:text => "Wow that adventure was amazing!")
+
+# adv = Adventure.create!(:title => "Test Adventure 4 = with html tags",
+# 	:author => "Test")
+# adv.pages.create!(:name => "start",
+# 	:text => "Starting here, this is first page <br> [[go to page 2|page2]] , or go to [[go to page 3|page3]] ")
+# adv.pages.create!(:name => "page2",
+# 	:text => "this is page 2, what a ride! <br> [[continue to page 3|page4]]")
+# adv.pages.create!(:name => "page3",
+# 	:text => "Wow that adventure was amazing!")
+
+# adv = Adventure.create!(:title => "Test Adventure 5 = with NO start",
+# 	:author => "Test")
+# adv.pages.create!(:name => "starting",
+# 	:text => "Starting here, this is first page <br> [[go to page 2|page2]] , or go to [[go to page 3|page3]] ")
+# adv.pages.create!(:name => "page2",
+# 	:text => "this is page 2, what a ride! <br> [[continue to page 3|page4]]")
+# adv.pages.create!(:name => "page3",
+# 	:text => "Wow that adventure was amazing!")
+

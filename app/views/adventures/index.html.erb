@@ -1,5 +1,34 @@
-<% @adventures.each do |adventure| %>
-  <p>
-    <%= link_to(adventure.title , adventure_page_path(adventure.id,"start")) %>
-  </p>
+<h1>Greetings dear fellas - let's create some exciting stories together!</h1>
+
+<h2>Locally made stories:</h2>
+<% if @adventures_local != nil %>
+  <ul>
+    <% @adventures_local.each do |adventure| %>
+      <li>
+        Title: <%= link_to(adventure.title , adventure_page_path(adventure.id,"start")) %>
+        , author: <%= adventure.author%>
+      </li>
+    <% end %>
+  </ul>
 <% end %>
+
+<h2>Globally sources stories:</h2>
+<% if @adventures_global != nil %>
+  <ul>
+    <% @adventures_global.each do |adventure| %>
+      <li>
+        Title: <%= link_to(adventure.title , adventure_page_path(adventure.id,"start")) %> 
+        , originaly from: <%= link_to(adventure.library.url, adventure.library.url) %>
+        author: <%= adventure.author%>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<hr>
+<h2>Add another library for scraping here:</h2>
+<form action="/scrape_request" method="post">  
+  <%= token_tag form_authenticity_token %>
+  <input type="text" value="example.com" name="url">
+  <input type="submit">
+</form>

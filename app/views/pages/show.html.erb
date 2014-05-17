@@ -1,6 +1,8 @@
 <p><%= link_to("<--- Back to all adventures", root_path) %></p>
 <hr>
 <br>
-<p>
+<% if @page != nil %>
  <%== linkify_page(@page) %> 
-</p>
+<% else %>
+  <p>Seems like no story was created for this adventure :(</p>
+<% end %>

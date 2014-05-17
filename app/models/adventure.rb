@@ -1,6 +1,6 @@
 class Adventure < ActiveRecord::Base
   belongs_to :library
-  has_many :pages
+  has_many :pages, dependent: :destroy
 
   before_create :create_guid
 
