@@ -41,6 +41,10 @@ class AdventuresWorker
                 (Adventure.find_by(guid:adventure["guid"]).updated_at < adventure.updated_at)
               )
             )
+            if ((Adventure.find_by(guid:adventure["guid"]) != nil) &&
+                (Adventure.find_by(guid:adventure["guid"]).updated_at < adventure.updated_at))
+              Adventure.find_by(guid:adventure["guid"]).destroy
+            end
             copy_adventure = Adventure.create(library_id:new_library.id,title:adventure["title"],author:adventure["author"],guid:adventure["guid"])
             if safe_each(adventure["pages"])
               adventure["pages"].each do |page|

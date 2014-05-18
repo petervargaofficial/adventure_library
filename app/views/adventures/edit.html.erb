@@ -1,0 +1,31 @@
+<p><%= link_to("<--- Back to all adventures", root_path) %></p>
+<hr>
+<h2> Adventure Title: "<%= @adventure.title %>" , Author: "<%= @adventure.author %>"</h2> <br>
+<%= form_for @adventure do |f| %>
+  <%= f.label :edit_adventure_title %><br>
+  <%= f.text_field :title %><br>
+  <%= f.label :edit_author %><br>
+  <%= f.text_field :author %> <br> 
+  <%= f.submit %>
+<% end %>
+<hr>
+<% @adventure.pages.order('created_at ASC').each do |page| %>
+  <h3>Page name: "<%= page.name%>"</h3>
+  ==========<br>
+  <strong><u>Preview:</u> </strong><br>
+  <%== linkify_page(page)%> <br>
+  ==========
+  <br>
+  
+  <%= form_for ([@adventure, page]) do |f| %>
+    <%= f.label :edit_page_name %><br>
+    <%= f.text_field :name %><br>
+    <%= f.label :edit_text %><br>
+    <%= f.text_area :text, size: "110x10" %> <br> 
+    <%= f.submit %><br>
+  <% end %>
+  <%= link_to("delete page", ([@adventure, page]), method: :delete, confirm: 'Are you sure?') %>
+  <hr>
+<% end %>
+
+<%= link_to("Add new page", new_adventure_page_path(@adventure)) %>

@@ -1,4 +1,5 @@
 class AdventuresController < ApplicationController
+  include PagesHelper
 
   def index
     @adventures_local = Adventure.where(library_id:nil)
@@ -6,6 +7,28 @@ class AdventuresController < ApplicationController
   end
 
   def new
+  	@adventure = Adventure.new
+  end
+
+  def create
+  	adventure = Adventure.create(adventure_params)
+  	adventure.pages.create(name:"start", text: params["adventure"]["pages"]["text"])
+  	redirect_to edit_adventure_path(adventure)
+  end
+
+  def update
+  	adventure = Adventure.find(params[:id])
+  	adventure.update(adventure_params)
+  	redirect_to edit_adventure_path
+  end
+
+  def edit
+  	@adventure = Adventure.find(params[:id])
+  end
+
+  def destroy
+  	Adventure.find(params[:id]).destroy
+  	redirect_to root_path
   end
 
   def adventures
@@ -37,6 +60,9 @@ class AdventuresController < ApplicationController
     redirect_to root_path
   end
 
-
+  private
+  def adventure_params
+  	params.require("adventure").permit(:title, :author)
+  end
 
 end

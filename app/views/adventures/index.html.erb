@@ -1,12 +1,15 @@
 <h1>Greetings dear fellas - let's create some exciting stories together!</h1>
-
+<hr>
+<%= link_to("Create a new adventure", new_adventure_path) %>
+<hr>
 <h2>Locally made stories:</h2>
 <% if @adventures_local != nil %>
   <ul>
-    <% @adventures_local.each do |adventure| %>
+    <% @adventures_local.order('created_at DESC').each do |adventure| %>
       <li>
-        Title: <%= link_to(adventure.title , adventure_page_path(adventure.id,"start")) %>
-        , author: <%= adventure.author%>
+        Title: <%= link_to(adventure.title+" (click to read)" , adventure_page_path(adventure.id,"start")) %>
+        , author: <%= adventure.author%>, <%= link_to("adventure editor", edit_adventure_path(adventure)) %>,
+        <%= link_to("delete adventure", adventure, method: :delete, confirm: 'Are you sure?') %>
       </li>
     <% end %>
   </ul>
@@ -15,11 +18,11 @@
 <h2>Globally sources stories:</h2>
 <% if @adventures_global != nil %>
   <ul>
-    <% @adventures_global.each do |adventure| %>
+    <% @adventures_global.order('created_at DESC').each do |adventure| %>
       <li>
-        Title: <%= link_to(adventure.title , adventure_page_path(adventure.id,"start")) %> 
+        Title: <%= link_to(adventure.title+" (click to read)" , adventure_page_path(adventure.id,"start")) %>
         , originaly from: <%= link_to(adventure.library.url, adventure.library.url) %>
-        author: <%= adventure.author%>
+        author: <%= adventure.author%>, <%= link_to("adventure editor", edit_adventure_path(adventure)) %>
       </li>
     <% end %>
   </ul>

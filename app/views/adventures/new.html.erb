@@ -1,0 +1,19 @@
+<p><%= link_to("<--- Back to all adventures", root_path) %></p>
+<hr>
+<br>
+
+<%= form_for @adventure do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %> <br>
+  <%= f.label :author %>
+  <%= f.text_field :author %> <br>
+  <%= f.fields_for :pages, @adventure.pages.build do |b| %>
+    Start-page text: <br>
+    <%= b.text_area :text, size: "80x20" %> <br>
+  <% end %>
+  <%= f.submit %>
+<% end %>
+<br>
+<hr>
+<h3>Note:</h3>
+Use double bracket style to create links ([[Link_text|desired_link_page_title]]).
